@@ -7,7 +7,7 @@ require 'php/database.php';
 $db_name = $_GET['local'];
 $link = DBConnect($db_name);
 
-$categorias = DBSelect('nome, icone', 'categoria', null, $link);
+$categorias = DBSelect('id, nome, icone', 'categoria', null, $link);
 $config = DBSelect('cor, empresa, logo, fundo', 'config', null, $link);
 
 $config = mysqli_fetch_assoc($config);
@@ -64,7 +64,7 @@ DBClose($link);
 
         while($exibe = mysqli_fetch_assoc($categorias)){
 
-          echo "<li><a data-transition='flip' href='pag-2.html'><img class='ui-li-icon' src='$exibe[icone]' />$exibe[nome]</a></li>";
+          echo "<li><a data-transition='flip' href='pag-2.php?db_name=$db_name&id_categoria=$exibe[id]&categoria=$exibe[nome]'><img class='ui-li-icon' src='$exibe[icone]' />$exibe[nome]</a></li>";
     
             }
         ?>

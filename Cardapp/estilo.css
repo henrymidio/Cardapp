@@ -67,3 +67,7 @@ h1 img {
 	text-transform: uppercase;
 }
 
+img.thumb{
+	height: 60px;
+	width: 60px;
+}
