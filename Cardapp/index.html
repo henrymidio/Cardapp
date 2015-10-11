@@ -1,0 +1,79 @@
+<?php
+
+require 'php/config.php';
+require 'php/connection.php';
+require 'php/database.php';
+
+//$db_name = $_GET['db_name'];
+
+$sql = "SELECT nome FROM categoria";
+$query = DBExecute($sql);
+
+global $arr = array();
+
+ while($exibe = mysqli_fetch_assoc($query)){
+  $arr = "<li><a href='#'>".$exibe['nome']."</a></li>";
+
+  
+}
+
+?>
+
+
+<!DOCTYPE html>
+<html>
+<head>
+  <!-- Include meta tag to ensure proper rendering and touch zooming -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Inclui Estilo CSS -->
+  <link rel="stylesheet" href="estilo.css">
+  <!-- Include jQuery Mobile stylesheets -->
+  <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
+  <!-- Include the jQuery library -->
+  <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+  <!-- Include the jQuery Mobile library -->
+  <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+</head>
+<body>
+
+
+
+<div data-role="page" data-theme="b">
+
+  <div data-role="panel" id="myPanel" data-theme="a"> 
+    <div class="logo-profile">
+      <img src="http://www.riosul.com.br/imagens/lojas_logos/cor/logo_burger_king.png" class="logotipo"/>
+      <h3>Burger King</h3>
+    </div>
+
+    <div>
+      <ul data-role="listview">
+        
+      
+      </ul>
+      
+    </div>
+
+  </div>
+  
+  <div data-role="header" data-position="fixed">
+
+  <a href="#myPanel" class="az-nodisc ui-btn ui-icon-bullets ui-nodisc-icon ui-btn-icon-notext">Menu</a>
+    <h1>CARDAPP</h1>
+    <a href="#" class="az-nodisc ui-btn ui-icon-search ui-btn-icon-right ui-nodisc-icon ui-btn-icon-notext">Login</a>
+  </div>
+
+       <div data-role="main" class="ui-content conteudo">
+    <div class="creditos">
+        <a href="#" class="site">www.cardapp.com</a>
+      </div>
+  </div>
+
+  
+</div>
+
+
+
+</body>
+</html>
+
