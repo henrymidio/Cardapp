@@ -1,3 +1,24 @@
+<?php
+
+header('Content-Type: text/html; charset=UTF-8');
+
+require 'php/config.php';
+require 'php/connection.php';
+require 'php/database.php';
+
+//Recupera nome do estbelecimento(BD)
+$db_name = $_GET['local'];
+
+//Inicia conexão com BD
+$link = DBConnect($db_name);
+
+//Seleciona nomes dos produtos no BD
+$produtos = DBSelect('nome', 'produto', null, $link);
+
+//Fecha conexão com BD
+DBClose($link);
+?>
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -33,9 +54,14 @@
       <input id="autocomplete-input" data-type="search" name="search-mini" id="search-mini" value="" data-mini="true" placeholder="Buscar..." />
     </form>
 
-    <ul data-role="listview" data-filter="true" data-filter-reveal="true" data-input="#autocomplete-input">
-		  <li><a href="#">Pizza de Atum</a></li>
-		  <li><a href="#">Pizza de Atum Especial</a></li>
+    <ul data-role="listview" data-filter="true" data-filter-reveal="true" data-icon='arrow-u-l' data-input="#autocomplete-input" class='ui-nodisc-icon ui-alt-icon'>
+      <?php
+
+        while($exibe = mysqli_fetch_assoc($produtos)){
+            echo "<li><a href='#'>$exibe[nome]</a></li>";
+        }
+      ?>
+		  
     </ul>
   </div>
 

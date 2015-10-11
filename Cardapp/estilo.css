@@ -36,10 +36,31 @@
 	color: white !important;
 }
 
+#myPanel {
+	background-color: #f6f6f6;
+}
+
+.info-profile {
+	margin-top: 10px;
+
+}
+
+.info-profile img {
+	margin-right: 8px;
+	vertical-align: top;
+}
+
+.icone {
+	width: 16px;
+	height: 16px;
+}
+
 .logo-profile {
-	height: 100px;
+	height: 200px;
 	text-align: center;
 	padding-bottom: 10px;
+	//border-bottom: 1px solid black;
+	
 }
 
 .logo-profile img {
@@ -49,7 +70,7 @@
 }
 
 .logo-profile h3 {
-	text-decoration: underline;
+	//text-decoration: underline;
 	
 }
 

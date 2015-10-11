@@ -1,14 +1,20 @@
 <?php
 
+header('Content-Type: text/html; charset=UTF-8');
+
 require 'php/config.php';
 require 'php/connection.php';
 require 'php/database.php';
 
+//Recupera nome do estbelecimento(BD)
 $db_name = $_GET['local'];
+
+//Inicia conexão com BD
 $link = DBConnect($db_name);
 
+
 $categorias = DBSelect('id, nome, icone', 'categoria', null, $link);
-$config = DBSelect('cor, empresa, logo, fundo', 'config', null, $link);
+$config = DBSelect('cor, empresa, logo, fundo, slogan, endereco, telefone', 'config', null, $link);
 
 $config = mysqli_fetch_assoc($config);
 
@@ -54,7 +60,14 @@ DBClose($link);
   <div data-role="panel" id="myPanel" data-theme="a"> 
     <div class="logo-profile">
       <img src=<?php echo "'$config[logo]'" ?> class="logotipo"/>
-      <h3>Menu</h3>
+        <div class="info-profile">
+            <span><i>"<?php echo $config['slogan'] ?>"</span></i><br/><br/>
+            <span><?php echo $config['endereco'] ?></span>
+            <h5><img class="icone" src="http://icons.iconarchive.com/icons/icons8/windows-8/512/Mobile-Phone-icon.png"/><?php echo $config['telefone'] ?></h5>
+
+        </div> 
+        
+      
     </div>
 
     <div>
@@ -79,7 +92,9 @@ DBClose($link);
 
   <a href="#myPanel" class="az-nodisc ui-btn ui-icon-bullets ui-nodisc-icon ui-btn-icon-notext">Menu</a>
     <h1 class="uppercase"><?php echo $config['empresa'] ?></h1>
-    <a href="search.html" data-transition='slide' class="az-nodisc ui-btn ui-icon-search ui-btn-icon-right ui-nodisc-icon ui-btn-icon-notext">Search</a>
+    <?php
+    echo "<a href='search.php?local=$db_name' data-transition='slide' class='az-nodisc ui-btn ui-icon-search ui-btn-icon-right ui-nodisc-icon ui-btn-icon-notext'>Search</a>";
+    ?>
   </div>
 
        <div data-role="main" class="ui-content conteudo">

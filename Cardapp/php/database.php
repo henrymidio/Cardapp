@@ -11,9 +11,16 @@ function DBExecute($link, $query) {
 
 //Seleciona dados 
 function DBSelect($fields = '*', $table, $args = null, $link){
+	
 	$query = "SELECT $fields FROM $table $args";
 
 	return DBExecute($link, $query);
+}
+
+//Protege contra SQL Injection
+function DBEscape($link, $dados){
+	$escaped = mysqli_real_escape_string($link, $dados);
+	return $escaped;
 }
 
 ?>

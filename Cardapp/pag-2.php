@@ -1,5 +1,7 @@
 <?php
 
+header('Content-Type: text/html; charset=UTF-8');
+
 require 'php/config.php';
 require 'php/connection.php';
 require 'php/database.php';
