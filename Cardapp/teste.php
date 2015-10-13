@@ -50,6 +50,8 @@ DBClose($link);
   color: <?php echo "$config[cor]" ?>;
 }
   </style>
+
+  
 </head>
 <body>
 

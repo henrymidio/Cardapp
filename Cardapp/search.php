@@ -34,15 +34,7 @@ DBClose($link);
   <!-- Include the jQuery Mobile library -->
   <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
 
-  <style type="text/css">
-
-    .ui-page .ui-header {
-    background: white !important;
-  }
-
-
-
-  </style>
+  
 </head>
 <body>
 	<div data-role="page" data-theme="a">
@@ -58,7 +50,7 @@ DBClose($link);
       <?php
 
         while($exibe = mysqli_fetch_assoc($produtos)){
-            echo "<li><a href='#'>$exibe[nome]</a></li>";
+            echo "<li><a href='pag-2.php?db_name=$db_name&produto=$exibe[nome]'>$exibe[nome]</a></li>";
         }
       ?>
 		  

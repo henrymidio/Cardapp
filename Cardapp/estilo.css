@@ -1,7 +1,6 @@
 
-
 .ui-page .ui-header {
-    background: green !important;
+    background: black !important;
 }
 
 .az-nodisc {
@@ -15,7 +14,7 @@
 }
 
 .conteudo {
-	height: 100vh;
+	height: 90vh;
 	background-image: url('https://gtmss.files.wordpress.com/2011/03/bk1.jpg');
 	background-size: 100% 100%;
 }

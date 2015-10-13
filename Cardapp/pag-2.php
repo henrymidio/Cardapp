@@ -9,15 +9,29 @@ require 'php/database.php';
 //Recupera parametros para buscar produtos
 $db = $_GET['db_name'];
 $id_categoria = $_GET['id_categoria'];
+$nome_produto = $_GET['produto'];
+$name_categoria = $_GET['categoria'];
 
 //Conecta ao BD
 $link = DBConnect($db);
+
+//Verifica de onde a página está sendo chamada
+if (isset($nome_produto)){
+
+  //Procura o produto buscado
+  $produtos = DBSelect('nome, thumbnail, descricao, preco', 'produto', "WHERE nome='$nome_produto'", $link);
+  $name_categoria = '';
+
+  //Fecha conexão
+  DBClose($link);
+} else {
 
 //Seleciona produtos
 $produtos = DBSelect('nome, thumbnail, descricao, preco', 'produto', "WHERE categoria=$id_categoria", $link);
 
 //Fecha conexão
 DBClose($link);
+}
 
 ?>
 
@@ -46,7 +60,7 @@ DBClose($link);
   <div data-role="header" data-position="fixed">
 
   <a href="teste.php"  data-rel="back" class="az-nodisc ui-nodisc-icon ui-btn ui-icon-arrow-l ui-btn-icon-notext">Menu</a>
-    <h1 class='uppercase'><?php echo $_GET['categoria']; ?></h1>
+    <h1 class='uppercase'><?php echo $name_categoria; ?></h1>
     
   </div>
 
