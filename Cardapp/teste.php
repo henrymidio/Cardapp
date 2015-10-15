@@ -13,7 +13,7 @@ $db_name = $_GET['local'];
 $link = DBConnect($db_name);
 
 
-$categorias = DBSelect('id, nome, icone', 'categoria', null, $link);
+$categorias = DBSelect('id, nome, icone, sub', 'categoria', null, $link);
 $config = DBSelect('cor, empresa, logo, fundo, slogan, endereco, telefone', 'config', null, $link);
 
 $config = mysqli_fetch_assoc($config);
@@ -73,13 +73,15 @@ DBClose($link);
     </div>
 
     <div>
-      <ul data-role="listview"style="margin-top: 10px;">
+      <ul data-role="listview" style="margin-top: 10px;">
         
         <?php
 
         while($exibe = mysqli_fetch_assoc($categorias)){
 
-          echo "<li><a data-transition='flip' href='pag-2.php?db_name=$db_name&id_categoria=$exibe[id]&categoria=$exibe[nome]'><img class='ui-li-icon' src='$exibe[icone]' />$exibe[nome]</a></li>";
+          echo "<li>
+                  <a data-transition='flip' href='pag-2.php?db_name=$db_name&id_categoria=$exibe[id]&categoria=$exibe[nome]&sub=$exibe[sub]'><img class='ui-li-icon' src='$exibe[icone]' />$exibe[nome]</a>
+                </li>";
     
             }
         ?>
