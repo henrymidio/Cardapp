@@ -75,11 +75,8 @@
 
 
 p.valor {
-	
-	float: left;
-	color: black;
-	margin-right: 10px;
-	//margin-top: 70px;
+	text-align: right;
+	color: green;
 }
 
 h1 img {
@@ -93,23 +90,4 @@ h1 img {
 img.thumb{
 	height: 60px;
 	width: 60px;
-}
-
-.marg {
-	margin-right: 5px;
-}
-.direita {
-	text-align: right;
-}
-
-.centro {
-	text-align: center;
-}
-
-.cancelar {
-	background: red !important;
-}
-
-.enviar {
-	background: url('http://www.subway.com.br/menu-agregador/images/bg_new.jpg') !important;
 }

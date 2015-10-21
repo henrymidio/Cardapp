@@ -12,7 +12,7 @@ $db_name = $_GET['local'];
 //Inicia conexão com BD
 $link = DBConnect($db_name);
 
-//Recupera dados de categorias e configurações do cardápio
+
 $categorias = DBSelect('id, nome, icone, sub', 'categoria', null, $link);
 $config = DBSelect('cor, empresa, logo, fundo, slogan, endereco, telefone', 'config', null, $link);
 
@@ -35,9 +35,7 @@ DBClose($link);
   <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
   <!-- Include the jQuery Mobile library -->
   <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
-  <!-- Spinbox plugin -->
-  <script type="text/javascript" src="http://dev.jtsage.com/cdn/spinbox/latest/jqm-spinbox.min.js"></script>
-    
+
   <!-- Estilos Config -->
   <style type="text/css">
     .ui-page .ui-header {
@@ -50,10 +48,7 @@ DBClose($link);
     p.valor {
   
   color: <?php echo "$config[cor]" ?>;
-  }
-
- 
-
+}
   </style>
 
   
@@ -63,7 +58,7 @@ DBClose($link);
 
 
 <div data-role="page" data-theme="b">
-  <!-- Inicio do navigation drawer -->
+
   <div data-role="panel" id="myPanel" data-theme="a"> 
     <div class="logo-profile">
       <img src=<?php echo "'$config[logo]'" ?> class="logotipo"/>
@@ -94,20 +89,19 @@ DBClose($link);
       </ul>
       
     </div>
-    <!-- Fim do navigation drawer -->
 
   </div>
   
   <div data-role="header" data-position="fixed">
 
-    <a href="#myPanel" class="az-nodisc ui-btn ui-icon-bullets ui-nodisc-icon ui-btn-icon-notext">Menu</a>
+  <a href="#myPanel" class="az-nodisc ui-btn ui-icon-bullets ui-nodisc-icon ui-btn-icon-notext">Menu</a>
     <h1 class="uppercase"><?php echo $config['empresa'] ?></h1>
     <?php
     echo "<a href='search.php?local=$db_name' data-transition='slide' class='az-nodisc ui-btn ui-icon-search ui-btn-icon-right ui-nodisc-icon ui-btn-icon-notext'>Search</a>";
     ?>
   </div>
 
-  <div data-role="main" class="ui-content conteudo">
+       <div data-role="main" class="ui-content conteudo">
         
     
   </div>

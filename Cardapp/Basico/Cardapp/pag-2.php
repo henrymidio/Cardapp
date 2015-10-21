@@ -13,10 +13,10 @@ $name_categoria = $_GET['categoria'];
 $sub = $_GET['sub'];
 
 //Se estiver setado usuário veio da página de busca
-@$nome_produto = $_GET['produto'];
+$nome_produto = $_GET['produto'];
 
 //Se estiver setado usuário veio de uma categoria que tem sub-categoria
-@$id_sub = $_GET['id_sub'];
+$id_sub = $_GET['id_sub'];
 
 //Conecta ao BD
 $link = DBConnect($db);
@@ -67,9 +67,6 @@ DBClose($link);
   <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
   <!-- Include the jQuery Mobile library -->
   <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
-  <!-- Spinbox plugin -->
-  <script type="text/javascript" src="http://dev.jtsage.com/cdn/spinbox/latest/jqm-spinbox.min.js"></script>
-  
 </head>
 <body>
 
@@ -80,17 +77,15 @@ DBClose($link);
     
   <div data-role="header" data-theme="b" data-position="fixed">
 
-    <a href="teste.php"  data-rel="back" class="az-nodisc ui-nodisc-icon ui-btn ui-icon-arrow-l ui-btn-icon-notext">Menu</a>
+  <a href="teste.php"  data-rel="back" class="az-nodisc ui-nodisc-icon ui-btn ui-icon-arrow-l ui-btn-icon-notext">Menu</a>
     <h1 class='uppercase'><?php echo $name_categoria; ?></h1>
-    <?php
-      echo "<a href='pedido.php' data-transition='slide' class='az-nodisc ui-btn ui-icon-shop ui-btn-icon-right ui-nodisc-icon ui-btn-icon-notext'>Search</a>";
-    ?>  
+    
   </div>
 
   <div data-role="main" class="ui-content">
     
     <?php
-    //Verifica se trata-se de categorias ou subcategorias
+
     if ($sub == true){
 
         //Conecta ao BD
@@ -121,27 +116,11 @@ DBClose($link);
           <h1><img class='thumb' src='$exibe[thumbnail]' />$exibe[nome]</h1>
           <p class='descricao'>$exibe[descricao]</p>
           <p class='valor'>PREÇO: R$ $exibe[preco]</p>
-          <div class='direita marg'><input type='text' data-mini='true' data-theme='a' data-role='spinbox' name='spin' id='spin' value='1' min='1' max='99' /></div>
-          <div class='direita'>
-            <a href='#popupDialog' data-rel='popup' data-position-to='window' data-role='button'data-icon='shop' data-inline='true' data-theme='b'>Adicionar</a>
-          </div>
-         </div>";
+        </div>";
 
     }
     ?>
-    
-    <!-- Conteúdo do dialog de confirmação do pedido -->  
-    <div data-role="popup" id="popupDialog" data-overlay-theme="a" data-theme="c" style="max-width:400px;" class="ui-corner-all">
-      <div data-role="header" data-theme="b" class="ui-corner-top">
-        <h1>Item adicionado</h1>
-      </div>
-      <div data-role="content" data-theme="a" class="ui-corner-bottom ui-content">
-        <br>
-        <h3 class="ui-title">Deseja finalizar o pedido?</p>
-        <a href="#" data-role="button" data-inline="true" data-rel="back" data-theme="c">Agora não</a>    
-        <a href="pedido.php" data-role="button" data-inline="true" data-transition="flow" data-theme="b">Finalizar pedido</a>  
-      </div>
-    </div>
+      
        
   </div>
 
